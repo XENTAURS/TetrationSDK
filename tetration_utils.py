@@ -36,12 +36,12 @@ class Scope(TetUtils):
         self.scopes = self.restclient.get('/app_scopes')
         self._ResponseCheck(self.scopes)
 
-    def ParentID_Lookup(self,parent_name):
+    def ParentID_Lookup(self,scope_name):
         '''
         Look up the id of the parent Scope using short_name ex. "TAAS104"
         '''
         for payload in json.loads(self.scopes.content):
-            if payload['short_name'] == parent_name:
+            if payload['short_name'] == scope_name:
                 parent_id = payload['id']
         return parent_id
 
